@@ -3,6 +3,8 @@
 
 #include <string>
 
+// To intercept low-level network traffic from the Linux kernel, we will use a Linux TAP device.
+// TUN/TAP device is often used by networking userspace applications to manipulate L3/L2 traffic.
 class TapInterface {
     public:
         TapInterface(const std::string& dev_name);
