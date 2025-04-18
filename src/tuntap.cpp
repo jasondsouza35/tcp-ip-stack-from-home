@@ -4,25 +4,25 @@
 #include <cstring>
 #include <iostream>
 
-tap_interface::tap_interface(const std::string& dev_name) {
-    create_tap_device(dev_name);
+TapInterface::TapInterface(const std::string& dev_name) {
+    createTapDevice(dev_name);
 }
 
-tap_interface::~tap_interface() {
+TapInterface::~TapInterface() {
     if (fd >= 0) {
         close(fd);
     }
 }
 
-int tap_interface::get_fd() const {
+int TapInterface::getFd() const {
     return fd;
 }
 
-std::string tap_interface::get_name() const {
+std::string TapInterface::getName() const {
     return name;
 }
 
-void tap_interface::create_tap_device(const std::string& dev_name) {
+void TapInterface::createTapDevice(const std::string& dev_name) {
     struct ifreq ifr {};
     const char* dev = dev_name.c_str();
 

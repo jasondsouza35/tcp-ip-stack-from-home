@@ -1,5 +1,4 @@
-#ifndef SYSHEAD_HPP
-#define SYSHEAD_HPP
+#pragma once
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -26,4 +25,3 @@
 #include <sys/prctl.h>
 // #include <sys/capability.h>
 
-#endif
