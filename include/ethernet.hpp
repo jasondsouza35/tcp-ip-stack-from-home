@@ -1,5 +1,5 @@
-#ifndef ETHERNET_H
-#define ETHERNET_H
+#ifndef ETHERNET_HPP
+#define ETHERNET_HPP
 
 #include <cstdint>
 
@@ -14,4 +14,4 @@ struct EthernetHeader {
 constexpr uint16_t ETH_TYPE_ARP = 0x0806;
 constexpr uint16_t ETH_TYPE_IPV4 = 0x0800;
 
-#endif ETHERNET_H
+#endif

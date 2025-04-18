@@ -1,5 +1,5 @@
-#include "tuntap.h"
-#include "syshead.h"
+#include "tuntap.hpp"
+#include "syshead.hpp"
 
 #include <cstring>
 #include <iostream>

@@ -1,5 +1,5 @@
-#ifndef SYSHEAD_H
-#define SYSHEAD_H
+#ifndef SYSHEAD_HPP
+#define SYSHEAD_HPP
 
 #include <stdlib.h>
 #include <stdio.h>

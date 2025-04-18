@@ -1,8 +1,8 @@
 // To intercept low-level network traffic from the Linux kernel, we will use a Linux TAP device. 
 // In short, a TUN/TAP device is often used by networking userspace applications to manipulate L3/L2 traffic, respectively. 
 
-#ifndef TUNTAP_H
-#define TUNTAP_H
+#ifndef TUNTAP_HPP
+#define TUNTAP_HPP
 
 #include <string>
 
