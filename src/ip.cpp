@@ -1,4 +1,10 @@
 #include "ip.hpp"
+#include "icmp.hpp"
+#include "ethernet.hpp"
+#include <iostream>
+#include <cstring>
+#include <arpa/inet.h>
+
 
 uint16_t ipChecksum(const void* data, int length) {
     uint32_t sum = 0;
