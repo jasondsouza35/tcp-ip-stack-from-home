@@ -16,7 +16,7 @@ static uint8_t cached_mac[6] = {0};
 /**
  * Inserts an IP-to-MAC mapping into the ARP cache.
  */
-void insert_arp_cache(uint32_t ip, const uint8_t mac[6]) {
+void insertArpCache(uint32_t ip, const uint8_t mac[6]) {
     cached_ip = ip;
     std::memcpy(cached_mac, mac, 6);
 }
@@ -24,7 +24,7 @@ void insert_arp_cache(uint32_t ip, const uint8_t mac[6]) {
 /**
  * Checks if a MAC address is known for the given IP.
  */
-bool lookup_arp_cache(uint32_t ip, uint8_t out_mac[6]) {
+bool lookupArpCache(uint32_t ip, uint8_t out_mac[6]) {
     if (ip == cached_ip) {
         std::memcpy(out_mac, cached_mac, 6);
         return true;
@@ -35,7 +35,7 @@ bool lookup_arp_cache(uint32_t ip, uint8_t out_mac[6]) {
 /**
  * Sends an ARP reply in response to an ARP request.
  */
-void send_arp_reply(int tap_fd, const uint8_t* dst_mac, uint32_t dst_ip,
+void sendArpCache(int tap_fd, const uint8_t* dst_mac, uint32_t dst_ip,
                     const uint8_t* src_mac, uint32_t src_ip) {
     uint8_t buffer[1500] = {0};
 
@@ -69,7 +69,7 @@ void send_arp_reply(int tap_fd, const uint8_t* dst_mac, uint32_t dst_ip,
 /**
  * Handles an incoming ARP packet.
  */
-void handle_arp(const uint8_t* packet, size_t len, const uint8_t* our_mac,
+void handleArp(const uint8_t* packet, size_t len, const uint8_t* our_mac,
                 uint32_t our_ip, int tap_fd) {
     if (len < sizeof(ArpHeader) + sizeof(ArpIPv4Payload)) {
         std::cerr << "[ARP] Packet too short" << std::endl;
@@ -92,7 +92,7 @@ void handle_arp(const uint8_t* packet, size_t len, const uint8_t* our_mac,
     }
 
     // Update the ARP cache with sender info
-    insert_arp_cache(senderIp, payload->senderMac);
+    insertArpCache(senderIp, payload->senderMac);
 
     if (targetIp != our_ip) {
         std::cout << "[ARP] Not for us" << std::endl;
@@ -101,6 +101,6 @@ void handle_arp(const uint8_t* packet, size_t len, const uint8_t* our_mac,
 
     if (opcode == ARP_REQUEST) {
         std::cout << "[ARP] Received ARP request" << std::endl;
-        send_arp_reply(tap_fd, payload->senderMac, senderIp, our_mac, our_ip);
+        sendArpCache(tap_fd, payload->senderMac, senderIp, our_mac, our_ip);
     }
 }
