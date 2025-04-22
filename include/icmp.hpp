@@ -21,6 +21,10 @@ struct IcmpEcho {
 constexpr uint8_t ICMP_ECHO_REPLY   = 0;
 constexpr uint8_t ICMP_ECHO_REQUEST = 8;
 
-void handleIcmp(const uint8_t* packet, size_t len, uint32_t srcIp, uint32_t dstIp, int tapFd);
-
-void handleIp(const uint8_t* packet, size_t len, const uint8_t* ourMac, const uint8_t* srcMac, int tapFd);
+void handleIcmp(const uint8_t* packet,
+    size_t        len,
+    uint32_t      srcIp,
+    uint32_t      dstIp,
+    const uint8_t* srcMac,
+    const uint8_t* ourMac,
+    int           tapFd);

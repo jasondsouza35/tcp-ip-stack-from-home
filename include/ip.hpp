@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+#include <unistd.h>
 
 struct IpHeader {
     uint8_t versionIhl;
@@ -18,3 +19,5 @@ struct IpHeader {
 // The checksum field is the 16 bit one’s complement of the one’s complement sum of all 16 bit words in the header.
 // For purposes of computing the checksum, the value of the checksum field is zero.
 uint16_t ipChecksum(const void* data, int length);
+
+void handleIp(const uint8_t* packet, size_t len, const uint8_t* ourMac, const uint8_t* srcMac, int tapFd);
